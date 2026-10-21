@@ -1,0 +1,25 @@
+name: Build résumé
+
+on:
+  push:
+    branches: [main]
+    paths: ["resume.tex", ".github/workflows/build.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: wtfjoke/setup-tectonic@v3
+      - run: tectonic resume.tex
+      - name: Commit the rebuilt PDF
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add resume.pdf
+          git diff --cached --quiet || git commit -m "Rebuild resume.pdf"
+          git push

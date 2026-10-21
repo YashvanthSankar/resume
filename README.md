@@ -1,10 +1,10 @@
 # Résumé
 
-`resume.tex` is the single source; `resume.pdf` is built from it with
-[tectonic](https://tectonic-typesetting.github.io):
+`resume.tex` is the single source. Every push rebuilds `resume.pdf` with
+[tectonic](https://tectonic-typesetting.github.io) and publishes it at
 
-```bash
-tectonic resume.tex
-```
+**https://yashvanthsankar.github.io/resume/resume.pdf**
 
-The PDF is also served at https://yashvanth.com/YashvanthS_Resume.pdf.
+which is also what https://yashvanth.com/YashvanthS_Resume.pdf points to.
+
+Build locally with `tectonic resume.tex`.
